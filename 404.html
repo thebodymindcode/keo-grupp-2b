@@ -32,7 +32,10 @@
   h3{font-size:21px}
   p{margin:0 0 15px}
   .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:0 0 16px}
-  .lede{font-size:clamp(16px,1.9vw,19px);color:var(--ink2);max-width:660px;font-weight:500}
+  .lede{font-size:clamp(16px,1.9vw,19px);color:var(--ink2);max-width:660px;font-weight:500;text-wrap:pretty}
+  h1,h2,h3,h4{text-wrap:balance}
+  p,li,.muted,.b p,.card p,.owul li,details.faq p,.article p{text-wrap:pretty}
+  body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   .muted{color:var(--ink2);font-weight:500} .ink3{color:var(--ink3)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:700;font-size:15px;border-radius:var(--r-sm);padding:15px 26px;cursor:pointer;border:1.5px solid transparent;transition:all .25s ease;min-height:52px;position:relative}
   .btn:active{transform:translateY(1px)}
@@ -53,7 +56,7 @@
   .menu>a:hover,.menu .drop:hover>a{color:var(--blue2);background:var(--soft)}
   .menu>a.on{color:var(--blue2)}
   .nav .right{margin-left:auto;display:flex;align-items:center;gap:16px;flex:0 0 auto}
-  .nav .tel{font-weight:800;font-size:16px;color:var(--navy);white-space:nowrap}
+  .nav .tel{font-weight:800;font-size:16px;color:var(--navy);white-space:nowrap;text-align:center;line-height:1.25}
   .nav .tel small{display:block;font-size:11px;font-weight:600;color:var(--ink3)}
   /* mega menu */
   .drop{position:static}
@@ -261,7 +264,7 @@
 <script>
 /* ===== ДАННЫЕ KEO GROUP ===== */
 const CO={tel:"+7 499 647-75-66",telHref:"+74996477566",email:"info@keogroup.ru",tg:"https://t.me/keogroup_ru",
-  addr:"Москва, 2-й Южнопортовый проезд, 20А стр.4 (м. Кожуховская)",hours:"Будни с 9:00 до 18:00, суббота и воскресенье выходной"};
+  addr:"Москва, 2-й Южнопортовый проезд, 20А стр. 4 (м. Кожуховская)",hours:"Будни с 9:00 до 18:00, суббота и воскресенье выходной"};
 const GROUPS=[
  {key:"stroyka",c:"var(--blue)",title:"Строительство и проектирование",desc:"От участка и проекта до ввода и записи в ЕГРН. Реконструкция без остановки бизнеса, новое строительство, АГР."},
  {key:"legal",c:"var(--red)",title:"Легализация и земля",desc:"Самострой по 819-ПП, защита в зоне КРТ, смена ВРИ, ПМТ и ПЗЗ, прохождение ГЗК. Сложные случаи на стыке права и градостроительства."},
@@ -387,12 +390,13 @@ function renderChrome(){
     <div class="fgrid">
       <div class="fcol"><a class="logo" href="#/" style="margin-bottom:16px"><span class="m">KEO</span><span><b>GROUP</b></span></a>
         <p class="muted" style="font-size:13.5px">Полный цикл по коммерческой недвижимости в Москве: проектирование, легализация, регистрация, управление. Инженеры и юристы в одной команде, результат с гарантией в договоре.</p>
-        <p class="muted" style="font-size:13.5px">${esc(CO.addr)}<br>${esc(CO.hours)}</p></div>
+        <p class="muted" style="font-size:13.5px;margin-top:14px"><b style="color:var(--navy)">Адрес.</b> ${esc(CO.addr)}</p>
+        <p class="muted" style="font-size:13.5px"><b style="color:var(--navy)">Режим работы.</b> ${esc(CO.hours)}</p></div>
       <div class="fcol"><h4>Направления</h4>${GROUPS.map(g=>`<a href="#/g/${g.key}">${esc(g.title)}</a>`).join('')}</div>
       <div class="fcol"><h4>Компания</h4><a href="#/keysy">Кейсы</a><a href="#/o-kompanii">О компании</a><a href="#/segmenty">Сегменты</a><a href="#/ceny">Цены</a><a href="#/faq">Вопросы</a><a href="#/blog">Блог</a></div>
       <div class="fcol"><h4>Контакты</h4><a href="tel:${CO.telHref}">${esc(CO.tel)}</a><a href="mailto:${CO.email}">${esc(CO.email)}</a><a href="${CO.tg}" target="_blank">Telegram</a><a href="#/politika">Политика конфиденциальности</a></div>
     </div>
-    <div class="fbot"><span>KEO GROUP, 2026. Демонстрационный сайт, собран Конструктором @thebodymindcode.</span><span>Москва, м. Кожуховская</span></div>`;
+    <div class="fbot"><span>KEO GROUP, 2026. Демонстрационный сайт, собран Конструктором @thebodymindcode.</span><span>Москва, м. Кожуховская</span></div>`;
 }
 function trustBar(){return `<div class="trust"><div class="wrap"><div class="row">
   <div class="t"><b>15+</b><span>лет на рынке Москвы</span></div>
@@ -658,10 +662,11 @@ PAGES["/kontakty"]=()=>`<section><div class="wrap">
       <p style="margin:0 0 12px"><a href="tel:${CO.telHref}" style="font-weight:800;font-size:20px;color:var(--navy)">${esc(CO.tel)}</a></p>
       <p class="muted" style="margin:0 0 8px"><a href="mailto:${CO.email}" style="color:var(--blue2);font-weight:700">${esc(CO.email)}</a></p>
       <p class="muted" style="margin:0 0 8px"><a href="${CO.tg}" target="_blank" style="color:var(--blue2);font-weight:700">Telegram</a></p>
-      <p class="muted" style="margin:14px 0 0">${esc(CO.addr)}<br>${esc(CO.hours)}</p>
+      <p class="muted" style="margin:14px 0 6px"><b style="color:var(--navy)">Адрес.</b> ${esc(CO.addr)}</p>
+      <p class="muted" style="margin:0"><b style="color:var(--navy)">Режим работы.</b> ${esc(CO.hours)}</p>
     </div>
   </div>
-  <div style="margin-top:30px"><div class="sec-head" style="margin-bottom:18px"><div class="eyebrow">Как нас найти</div><h2>Наш офис на карте</h2><p class="lede" style="margin-top:12px">Москва, 2-й Южнопортовый проезд, 20А стр.4, рядом с метро Кожуховская.</p></div>
+  <div style="margin-top:30px"><div class="sec-head" style="margin-bottom:18px"><div class="eyebrow">Как нас найти</div><h2>Наш офис на карте</h2><p class="lede" style="margin-top:12px">Москва, 2-й Южнопортовый проезд, 20А стр.4, рядом с метро Кожуховская.</p></div>
     <div id="keomap"></div>
     <div style="margin-top:14px"><a class="btn ghost bracket" href="https://yandex.ru/maps/?text=${encodeURIComponent('Москва, 2-й Южнопортовый проезд, 20А стр.4')}" target="_blank" rel="noopener">Построить маршрут</a></div>
   </div>
