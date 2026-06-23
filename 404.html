@@ -251,6 +251,20 @@ function esc(s){return (s==null?'':String(s)).replace(/[&<>]/g,c=>({'&':'&amp;',
 /* цвета направлений в светлой палитре */
 const GCOL={stroyka:"#35b8fc",legal:"#7a5cff",kadastr:"#27c281",dgi:"#ff8a3d",upravlenie:"#f2b705"};
 GROUPS.forEach(g=>g.c=GCOL[g.key]||"#35b8fc");
+/* ориентиры по рынку (точная смета после разбора объекта) */
+const PRICES={
+ "rekonstrukciya-zdaniy":"по запросу","novoe-stroitelstvo":"по запросу","agr-arhitekturnye-resheniya":"от 150 000 руб",
+ "nekapitalnye-obekty":"от 120 000 руб","avtorskiy-stroitelnyy-nadzor":"по запросу","inzhenernye-seti":"по запросу",
+ "legalizaciya-819pp":"от 250 000 руб","krt-zashchita":"по запросу","vri-zemelnogo-uchastka":"от 100 000 руб",
+ "pmt-pzz":"от 250 000 руб","gzk":"от 150 000 руб","redevelopment-promploschadok":"по запросу","pasport-bezopasnosti-zos":"от 40 000 руб",
+ "rosreestr-priostanovki":"от 25 000 руб","registraciya-prava":"от 20 000 руб","izmeneniya-egrn":"от 20 000 руб",
+ "kadastrovyy-uchet":"от 15 000 руб","tehnicheskiy-plan":"от 15 000 руб","tehnicheskoe-zaklyuchenie":"от 20 000 руб",
+ "proekt-pereplanirovki":"от 25 000 руб","akt-obsledovaniya":"от 12 000 руб","registraciya-dogovorov":"от 15 000 руб",
+ "razdel-obedinenie":"от 25 000 руб","mezhevanie-granicy":"от 20 000 руб",
+ "dgi-vykup-159fz":"от 150 000 руб","dgi-spory":"от 100 000 руб","dgi-lgotnaya-arenda":"от 80 000 руб","osparivanie-kadastrovoy-stoimosti":"от 50 000 руб",
+ "upravlenie-nedvizhimostyu":"по запросу","negosudarstvennaya-ekspertiza":"от 90 000 руб","konsultaciya-ekspress-dose":"от 5 000 руб",
+};
+SERVICES.forEach(s=>{s.price=PRICES[s.slug]||s.price||"по запросу";});
 /* SVG иконки направлений */
 const ICONS={
  stroyka:'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-5h6v5"/><path d="M9 10h.01M15 10h.01"/></svg>',
@@ -374,10 +388,13 @@ PAGES["/o-kompanii"]=()=>`<section><div class="wrap">
 
 PAGES["/ceny"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>Цены</span></p>
-  <div class="sec-head"><div class="eyebrow">Цены</div><h2>Ориентиры по стоимости</h2><p class="lede" style="margin-top:12px">Точную смету считаем после разбора объекта, оплата по этапам. Ниже ориентиры по типовым услугам.</p></div>
-  <div class="grid g2">${SERVICES.filter(s=>s.price).map(s=>`<div class="card" style="display:flex;justify-content:space-between;gap:14px;align-items:center"><div><h4 style="font-size:15px;margin-bottom:4px">${esc(s.name)}</h4><p class="muted" style="font-size:13px;margin:0">${esc(s.note)}</p></div><div class="price" style="white-space:nowrap;color:var(--blue2)">${esc(s.price)}</div></div>`).join('')}</div>
-  <p class="muted" style="margin-top:22px;font-size:14px">По остальным направлениям стоимость индивидуальная, зависит от объекта. <a href="#/kontakty" style="color:var(--blue2);font-weight:700">Запросите расчёт</a>.</p>
-</div></section>`;
+  <div class="sec-head"><div class="eyebrow">Цены</div><h2>Ориентиры по стоимости</h2><p class="lede" style="margin-top:12px">Это средние ориентиры по рынку Москвы. Точную смету считаем после разбора объекта, оплата по этапам, на руки закрывающие документы.</p></div>
+  ${GROUPS.map(g=>`<div class="card" style="margin-bottom:18px;border-top:3px solid ${g.c}">
+    <div style="display:flex;align-items:center;gap:11px;margin-bottom:8px"><span style="width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,${g.c} 14%,#fff);color:${g.c}">${ICONS[g.key]}</span><h3 style="font-size:20px">${esc(g.title)}</h3></div>
+    ${svcByGroup(g.key).map(x=>`<div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)"><a href="#/u/${x.slug}" style="font-weight:600;font-size:14.5px">${esc(x.name)}</a><span class="price" style="white-space:nowrap;color:${x.price&&x.price[0]==='о'&&x.price[1]==='т'?'var(--blue2)':'var(--ink3)'}">${esc(x.price)}</span></div>`).join('')}
+  </div>`).join('')}
+  <p class="muted" style="margin-top:18px;font-size:14px">«По запросу» значит цена индивидуальная и зависит от объекта (легализация, реконструкция, КРТ, надзор). <a href="#/kontakty" style="color:var(--blue2);font-weight:700">Запросите расчёт</a>, посчитаем по вашей ситуации.</p>
+</div></section>${band("Посчитаем смету по вашему объекту","Оставьте заявку, эксперт разберёт ситуацию и назовёт точную стоимость и сроки.")}`;
 
 PAGES["/blog"]=()=>`<section><div class="wrap">
   <p class="crumbs"><a href="#/">Главная</a> / <span>Блог</span></p>
