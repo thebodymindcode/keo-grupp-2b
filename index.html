@@ -187,14 +187,18 @@
   .owul li{position:relative;padding-left:32px;color:var(--ink2);font-size:14.5px;font-weight:500;line-height:1.45}
   .owul li::before{content:"\2713";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:color-mix(in srgb,var(--green) 16%,#fff);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
   @media(max-width:860px){.owinset{grid-template-columns:1fr}.owpic{min-height:210px}.owtext{padding:28px}}
-  .cbtn{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:15px 22px;font-family:var(--sans);font-weight:800;font-size:14.5px;cursor:pointer;box-shadow:0 12px 30px rgba(53,184,252,.4);display:inline-flex;align-items:center;gap:9px}
+  .cbtn{position:fixed;right:20px;bottom:20px;z-index:70;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:15px 22px;font-family:var(--sans);font-weight:800;font-size:14.5px;cursor:pointer;box-shadow:0 12px 30px rgba(53,184,252,.4);display:inline-flex;align-items:center;gap:9px;animation:cbtnpulse 2.8s ease-in-out infinite}
+  .cbtn svg{width:19px;height:19px;flex:0 0 auto}
+  .cbtn:hover{animation:none}
+  @keyframes cbtnpulse{0%,100%{box-shadow:0 12px 30px rgba(53,184,252,.4)}50%{box-shadow:0 12px 30px rgba(53,184,252,.45),0 0 0 9px rgba(53,184,252,.12)}}
+  @media(prefers-reduced-motion:reduce){.cbtn{animation:none}}
   .cbtn:hover{background:var(--blue2)}
   @supports(padding:max(0px)){.cbtn{bottom:max(20px,env(safe-area-inset-bottom))}}
   .cback{position:fixed;inset:0;z-index:90;background:rgba(15,17,22,.5);display:none;align-items:center;justify-content:center;padding:20px}
   .cback.open{display:flex}
   .cmodal{background:var(--white);border-radius:var(--r);max-width:420px;width:100%;padding:28px;box-shadow:var(--sh-h);position:relative}
   .cmodal .x{position:absolute;top:14px;right:16px;background:transparent;border:0;font-size:24px;color:var(--ink3);cursor:pointer;line-height:1}
-  @media(max-width:760px){.cbtn{padding:13px 18px;font-size:13.5px}}
+  @media(max-width:760px){.cbtn{width:58px;height:58px;padding:0;justify-content:center;right:16px}.cbtn .cbtn-t{display:none}.cbtn svg{width:23px;height:23px}}
   .lthumb{height:200px;overflow:hidden;background:#eef0f7;border-bottom:1px solid var(--line)}
   .lthumb img{width:100%;height:100%;object-fit:cover;object-position:top}
   .card.letter:hover{transform:translateY(-4px);box-shadow:var(--sh-h)}
@@ -251,7 +255,7 @@
 <main id="app"></main>
 <footer><div class="wrap" id="footer"></div></footer>
 <div class="lbox" id="lbox"><button class="x" id="lbx" aria-label="Закрыть">×</button><img id="lbimg" src="" alt=""></div>
-<button class="cbtn" id="cbtn">Заказать звонок</button>
+<button class="cbtn" id="cbtn" aria-label="Заказать звонок"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="cbtn-t">Заказать звонок</span></button>
 <div class="cback" id="cback"><div class="cmodal">
   <button class="x" id="cbx" aria-label="Закрыть">×</button>
   <h3 style="margin-bottom:6px">Заказать обратный звонок</h3>
