@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>KEO GROUP, проектирование, легализация и регистрация коммерческой недвижимости в Москве</title>
-<meta name="description" content="KEO GROUP: полный цикл по коммерческой недвижимости в Москве. Реконструкция, легализация 819-ПП, КРТ, Росреестр, ДГИ, смена ВРИ. 15+ лет, 30+ проектов, 100% решений ГЗК. Гарантия в договоре.">
+<meta name="description" content="KEO GROUP: полный цикл по коммерческой недвижимости в Москве. Реконструкция, легализация 819-ПП, КРТ, Росреестр, ДГИ, смена ВРИ. более 25 лет, 30+ проектов, 100% решений ГЗК. Гарантия в договоре.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -467,7 +467,7 @@ const PRICES={
 };
 SERVICES.forEach(s=>{s.price=PRICES[s.slug]||s.price||"по запросу";});
 const GROUP_IMG={stroyka:"stroyka",legal:"legal",kadastr:"kadastr",dgi:"dgi",upravlenie:"upravlenie"};
-const GROUP_BADGE={stroyka:["15+","лет опыта в Москве"],legal:["100%","решений ГЗК по портфелю"],kadastr:["400+","объектов зарегистрировано"],dgi:["95%","положительных решений"],upravlenie:["с 2010","года на рынке"]};
+const GROUP_BADGE={stroyka:["25+","лет на рынке Москвы"],legal:["100%","решений ГЗК по портфелю"],kadastr:["400+","объектов зарегистрировано"],dgi:["95%","положительных решений"],upravlenie:["с 2010","года на рынке"]};
 const GEN_STEPS=[["01","Разбор объекта","Бесплатно оцениваем ситуацию, документы и перспективы"],["02","Документы и стратегия","Готовим пакет и план под вашу задачу"],["03","Согласование","Ведём дело в госорганах от подачи до решения"],["04","Результат","Доводим до записи в ЕГРН, протокола или нужного документа"]];
 const GEN_FAQ=[["Сколько стоит и как считаете","Точную смету называем только после разбора объекта: цена зависит от площади, статуса земли и того, что уже сделано до нас. Платите по этапам, а не всё вперёд, так вы видите прогресс и не уходите в риск на старте. На каждый этап даём закрывающие документы на руки. Так вы понимаете, за что заплатили и что получили."],["Даёте ли гарантию","Результат и зону ответственности мы фиксируем прямо в договоре, чтобы не было устных обещаний. По ряду направлений работает условие «результат или возврат средств». Важный нюанс: там, где финальное слово за госорганом или судом, мы не обещаем стопроцентный исход, а отвечаем за полноту и качество работы. Это честная рамка, и она защищает вас."],["Сколько занимает","Срок сильно зависит от объекта: где-то всё упирается в документы, где-то в очередь на комиссии и регистрацию. Поэтому одну цифру для всех мы не называем, это было бы нечестно. На разборе смотрим вашу конкретную ситуацию и говорим реальный срок с запасом. Так вы планируете без сюрпризов."],["В каком регионе работаете","Работаем по Москве и Московской области. Это не география ради галочки, а наша специализация: знаем местные госорганы, их требования и живую практику. Понимаем, как на деле проходят согласования и где обычно тормозит. За счёт этого закладываем верные сроки и не наступаем на типовые грабли региона."]];
 /* SVG иконки направлений */
@@ -493,10 +493,10 @@ function renderChrome(){
       <div class="feat"><div><h4>Не знаете, с чего начать</h4><p>Оставьте заявку, эксперт разберёт ваш объект и подскажет нужное направление и план.</p></div><a class="btn primary bracket" href="#/kontakty" style="margin-top:16px">Получить разбор</a></div>
     </div></div></div></div>
     <a href="#/segmenty" data-r="/segmenty">Сегменты</a>
-    <a href="#/keysy" data-r="/keysy">Кейсы</a>
+    <a href="#/keysy" data-r="/keysy">Портфолио</a>
     <a href="#/o-kompanii" data-r="/o-kompanii">О компании</a>
     <a href="#/ceny" data-r="/ceny">Цены</a>
-    <a href="#/faq" data-r="/faq">Вопросы</a>
+    <a href="#/blog" data-r="/blog">Блог</a>
     <a href="#/kontakty" data-r="/kontakty">Контакты</a>`;
   
   (function(){var drop=document.querySelector('.menu .drop');if(drop){drop.querySelectorAll('.mega a').forEach(function(a){a.addEventListener('click',function(){drop.classList.add('closing');});});drop.addEventListener('mouseleave',function(){drop.classList.remove('closing');});}})();
@@ -507,7 +507,7 @@ function renderChrome(){
         <p class="muted" style="font-size:13.5px;margin-top:14px"><b style="color:var(--navy)">Адрес.</b> ${esc(CO.addr)}</p>
         <p class="muted" style="font-size:13.5px"><b style="color:var(--navy)">Режим работы.</b> ${esc(CO.hours)}</p></div>
       <div class="fcol"><h4>Направления</h4>${GROUPS.map(g=>`<a href="#/g/${g.key}">${esc(g.title)}</a>`).join('')}</div>
-      <div class="fcol"><h4>Компания</h4><a href="#/keysy">Кейсы</a><a href="#/o-kompanii">О компании</a><a href="#/segmenty">Сегменты</a><a href="#/ceny">Цены</a><a href="#/faq">Вопросы</a><a href="#/blog">Блог</a></div>
+      <div class="fcol"><h4>Компания</h4><a href="#/keysy">Портфолио</a><a href="#/o-kompanii">О компании</a><a href="#/segmenty">Сегменты</a><a href="#/ceny">Цены</a><a href="#/blog">Блог</a></div>
       <div class="fcol"><h4>Контакты</h4><a href="tel:${CO.telHref}">${esc(CO.tel)}</a><a href="mailto:${CO.email}">${esc(CO.email)}</a><a href="${CO.tg}" target="_blank">Telegram</a><a href="#/politika">Политика конфиденциальности</a></div>
     </div>
     <div class="fbot"><span>KEO GROUP, 2026. Демонстрационный сайт, собран Конструктором @thebodymindcode.</span><span>Москва, м. Кожуховская</span></div>`;
@@ -515,7 +515,7 @@ function renderChrome(){
   typoNodes(document.getElementById('footer'));
 }
 function trustBar(){return `<div class="trust"><div class="wrap"><div class="row">
-  <div class="t"><b>15+</b><span>лет на рынке Москвы</span></div>
+  <div class="t"><b>25+</b><span>лет на рынке Москвы</span></div>
   <div class="t"><b>30+</b><span>проектов легализации</span></div>
   <div class="t"><b>30 000+</b><span>кв.м узаконено</span></div>
   <div class="t hl"><b>100%</b><span>положительных решений ГЗК</span></div>
@@ -577,8 +577,8 @@ PAGES["/"]=()=>`
   <section class="hero"><div class="wrap"><div class="row">
     <div>
       <div class="eyebrow">Единое окно по недвижимости в Москве</div>
-      <h1 class="heroh1"><span>Проведём объект от</span> <span>проблемы до права</span> <span>собственности</span></h1>
-      <p class="lede">Полный цикл под ключ: аудит, проект, согласование, легализация, регистрация. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
+      <h1 class="heroh1"><span>Вся недвижимость</span> <span>в одном окне</span></h1>
+      <p class="lede">Полный цикл под ключ: аудит, проект, согласование, легализация, регистрация, строительство и отделка. Инженеры, кадастровые специалисты и юристы в одной команде. Результат закрепляем гарантией в договоре.</p>
       <div class="cta"><a class="btn primary bracket" href="#/kontakty">Получить разбор объекта</a><a class="btn ghost bracket" href="#/uslugi">Все услуги</a></div>
     </div>
     <div class="pic"><img src="./images/hero.jpg" alt="Деловая Москва">
@@ -588,7 +588,7 @@ PAGES["/"]=()=>`
   ${trustBar()}
   <section class="onewin"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Единое окно</div><h2>Одно окно. Можно выдохнуть.</h2>
-      <p class="lede" style="margin-top:12px">Вы пришли туда, где недвижимостью в Москве занимаются под ключ. Не нужно собирать пятерых подрядчиков и бегать по инстанциям. Опишите объект, дальше всё берём на себя: проект, согласования, легализация, регистрация.</p></div>
+      <p class="lede" style="margin-top:12px">Вы пришли туда, где недвижимостью в Москве занимаются под ключ. Не нужно собирать пятерых подрядчиков и бегать по инстанциям. Опишите объект, дальше всё берём на себя: проект, согласования, легализация, регистрация, строительство и отделка.</p><p style="margin-top:14px;font-size:15.5px;color:var(--ink2)">КЕО это <b style="color:var(--navy)">Качество</b>, <b style="color:var(--navy)">Единство</b> и <b style="color:var(--navy)">Ответственность</b>. А для вас, ваше <b style="color:var(--navy)">Качественное Единое Окно</b>.</p></div>
     <div class="funnel">
       <div class="fchips"><span class="fchip">Строительство</span><span class="fchip">Легализация и земля</span><span class="fchip">Кадастр и Росреестр</span><span class="fchip">ДГИ и город</span><span class="fchip">Управление активами</span></div>
       <div class="farrow"><span>всё сходится в одно окно</span></div>
@@ -617,7 +617,7 @@ PAGES["/"]=()=>`
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Результаты</div><h2>Реальные объекты и цифры</h2></div>
     <div class="grid g3">${CASES.slice(0,3).map(caseCard).join('')}</div>
-    <div style="margin-top:26px"><a class="btn ghost bracket" href="#/keysy">Смотреть все кейсы</a></div>
+    <div style="margin-top:26px"><a class="btn ghost bracket" href="#/keysy">Смотреть портфолио</a></div>
   </div></section>
   <section style="padding-top:0"><div class="wrap">
     <div class="sec-head"><div class="eyebrow">Как мы работаем</div><h2>Путь объекта под ключ</h2></div>
@@ -668,14 +668,14 @@ PAGES["/segmenty"]=()=>`
 
 PAGES["/keysy"]=()=>`
  <section class="hero" style="padding-bottom:6px"><div class="wrap"><div class="row">
-   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Кейсы</span></p>
+   <div><p class="crumbs"><a href="#/">Главная</a> / <span>Портфолио</span></p>
      <div class="eyebrow">Портфолио</div><h1>Объекты и результаты</h1>
      <p class="lede">Реальные проекты KEO GROUP: узаконенные объекты с площадями, сроками и протоколами ГЗК, а также объекты, которые ведём в управлении. Цифры из договоров.</p>
      <div class="cta"><a class="btn primary bracket" href="#/kontakty">Хочу такой же результат</a></div></div>
    <div class="pic"><img src="./images/land/cases.jpg" alt="Объекты KEO GROUP"><div class="badge"><b>30+</b><span>реализованных проектов легализации</span></div></div>
  </div></div></section>
  ${trustBar()}
- <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Как мы доводим до результата</div><h2>Путь объекта к праву собственности</h2></div>
+ <section style="padding-top:10px"><div class="wrap"><div class="sec-head"><div class="eyebrow">Как мы доводим до результата</div><h2>От заявки до права собственности</h2></div>
    <div class="grid g4">
      <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">01</div><h3 style="font-size:17px;margin-bottom:8px">Аудит и стратегия</h3><p class="muted" style="font-size:13.5px;margin:0">Разбираем объект, документы и риски, строим план</p></div>
      <div class="card"><div style="font-size:38px;font-weight:800;color:#7a5cff;line-height:1;margin-bottom:12px">02</div><h3 style="font-size:17px;margin-bottom:8px">Документация</h3><p class="muted" style="font-size:13.5px;margin:0">ЗОС, АГР, паспорт безопасности, техническая база</p></div>
@@ -703,7 +703,7 @@ PAGES["/o-kompanii"]=()=>`
    <div><p class="crumbs"><a href="#/">Главная</a> / <span>О компании</span></p>
      <div class="eyebrow">О компании</div><h1>KEO GROUP</h1>
      <p class="lede">Юридическое и градостроительное сопровождение коммерческой недвижимости в Москве. Основатели в недвижимости больше 20 лет, команда работает по Москве и области как единое окно: юристы, кадастровые инженеры и градостроители в одном кабинете. С 2023 года развиваем управление коммерческой недвижимостью.</p>
-     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Обсудить проект</a><a class="btn ghost bracket" href="#/keysy">Наши кейсы</a></div>
+     <div class="cta"><a class="btn primary bracket" href="#/kontakty">Обсудить проект</a><a class="btn ghost bracket" href="#/keysy">Портфолио</a></div>
    </div>
    <div class="pic"><img src="./images/land/about.jpg" alt="KEO GROUP"><div class="badge"><b>20+ лет</b><span>опыта основателей в недвижимости</span></div></div>
  </div></div></section>
@@ -852,7 +852,7 @@ const OIC={
  stamp:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21h14"/><path d="M9 8a3 3 0 1 1 6 0c0 2-2 2.5-2 4h-2c0-1.5-2-2-2-4Z"/><path d="M6 17h12v-1a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v1Z"/></svg>',
 };
 const GROUP_RICH={
- stroyka:{stats:[["15+","лет в Москве"],["100%","решений ГЗК"],["30 000+","кв.м узаконено"],["1 окно","инженеры и юристы"]],
+ stroyka:{stats:[["25+","лет в Москве"],["100%","решений ГЗК"],["30 000+","кв.м узаконено"],["1 окно","инженеры и юристы"]],
   who:["Реконструкция здания без остановки бизнеса","Новое коммерческое строительство под ключ","Изменение фасада, входной группы, АГР","Размещение павильона или некапитального объекта","Нужен авторский и строительный надзор"],
   outcomes:[[OIC.doc,"Проект и АГР","Согласованная документация и архитектурный облик"],[OIC.stamp,"Разрешение","Разрешение на строительство или размещение"],[OIC.key,"Ввод и ЕГРН","Ввод в эксплуатацию и запись площадей в ЕГРН"]],
   risks:["Самострой попадает в реестр 819-ПП и под снос","Штрафы и приостановка работ от ГИН","Объект нельзя продать, сдать в аренду или заложить","Время теряется на отказах по кругу"],
@@ -897,7 +897,7 @@ const EXTRA_FAQ={
 Object.keys(EXTRA_FAQ).forEach(function(k){if(GROUP_RICH[k]&&GROUP_RICH[k].faq)GROUP_RICH[k].faq=GROUP_RICH[k].faq.concat(EXTRA_FAQ[k]);});
 
 function caseBlock(group){
- if(group==='legal'||group==='stroyka')return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:var(--blue2)">Наши кейсы</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Реальные проекты компании с площадями, сроками и протоколами ГЗК.</p></div><div class="grid g3">${CASES.slice(0,6).map(caseCard).join('')}</div><div style="margin-top:24px"><a class="btn ghost bracket" href="#/keysy">Все кейсы</a></div></div></section>`;
+ if(group==='legal'||group==='stroyka')return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:var(--blue2)">Портфолио</div><h2>Объекты, которые узаконили</h2><p class="lede" style="margin-top:12px">Реальные проекты компании с площадями, сроками и протоколами ГЗК.</p></div><div class="grid g3">${CASES.slice(0,6).map(caseCard).join('')}</div><div style="margin-top:24px"><a class="btn ghost bracket" href="#/keysy">Все кейсы</a></div></div></section>`;
  if(group==='upravlenie')return `<section style="padding-top:0"><div class="wrap"><div class="sec-head"><div class="eyebrow" style="color:var(--gold)">Портфолио</div><h2>Объекты в управлении</h2></div><div class="grid g3">${CASES_MGMT.map(mgmtCaseCard).join('')}</div></div></section>`;
  return '';
 }
